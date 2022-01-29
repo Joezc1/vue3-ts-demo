@@ -1,9 +1,10 @@
 import axios,{ AxiosRequestConfig,AxiosResponse} from "axios"
 import NProgress from "nprogress"
 
+const baseUrl:any = import.meta.env.VITE_APP_WEB_URL
+
 // 设置请求的基本地址
-// axios.defaults.baseURL = process.env.VITE_APP_WEB_URL
-axios.defaults.baseURL = '/api'
+axios.defaults.baseURL = baseUrl
 
 // 请求超时时间
 axios.defaults.timeout = 10000

@@ -25,16 +25,16 @@ module.exports = appInfo => {
     uploadDir: 'app/public/upload'
   };
 
-//   // 静态资源配置
-//  config.static = {
-//     // 静态化访问前缀,如：`http://127.0.0.1:7001/static/images/logo.png`
-//    prefix: '/', 
-//     dir: 'app/h5', // `String` or `Array:[dir1, dir2, ...]` 静态化目录,可以设置多个静态化目录
-//     dynamic: true, // 如果当前访问的静态资源没有缓存，则缓存静态文件，和`preload`配合使用；
-//     preload: false,
-//     maxAge: 31536000, // in prod env, 0 in other envs
-//     buffer: true, // in prod env, false in other envs
-//   };
+  // 静态资源配置
+ config.static = {
+    // 静态化访问前缀,如：`http://127.0.0.1:7001/static/images/logo.png`
+    prefix: '/h5', 
+    dir: 'app/h5', // `String` or `Array:[dir1, dir2, ...]` 静态化目录,可以设置多个静态化目录
+    dynamic: true, // 如果当前访问的静态资源没有缓存，则缓存静态文件，和`preload`配合使用；
+    preload: false,
+    maxAge: 31536000, // in prod env, 0 in other envs
+    buffer: true, // in prod env, false in other envs
+  };
 
   // 网关配置
   config.security = {
