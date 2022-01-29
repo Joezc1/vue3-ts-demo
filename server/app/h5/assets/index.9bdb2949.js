@@ -1,0 +1,1 @@
+import{u as s}from"./index.c2c40cbf.js";import{j as n,x as r,o as a,m as c,n as e,y as u,z as l,A as m}from"./vendor.4a9224a2.js";const p=e("h2",null,"home",-1),h=n({setup(i){const t=s(),o=r(()=>t.state.user.counter);return(d,_)=>(a(),c(m,null,[p,e("div",null,"vuex\u4E2D\u7684count:"+u(l(o)),1)],64))}});export{h as default};
