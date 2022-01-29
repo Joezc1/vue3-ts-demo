@@ -1,6 +1,6 @@
 export interface LoginParams {
-    userName: string
-    passWord: string | number
+    username: string | number
+    password: string | number
 }
 export interface LoginApi {
     login: (params: LoginParams)=> Promise<any>

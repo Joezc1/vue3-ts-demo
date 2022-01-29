@@ -64,6 +64,7 @@
 </template>
 
 <script setup lang="ts">
+import LoginApi from "@/service/api/login"
 import { LoginSubmitType } from "@/helper/type"
 import { useRouter } from "vue-router"
 import { ref } from "vue"
@@ -77,8 +78,12 @@ const changeType = (e: number): void => {
   type.value = e
 }
 
-const onSubmit = (value: LoginSubmitType): void => {
+const onSubmit = async (value: LoginSubmitType): Promise<void> => {
   console.log("value", value);
+  const res = await LoginApi.login({
+    username: 'zhaochao',
+    password: '123456'
+  })
 }
 
 </script>

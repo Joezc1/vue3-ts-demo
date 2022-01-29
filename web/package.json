@@ -18,6 +18,7 @@
     "vuex-persistedstate": "^4.1.0"
   },
   "devDependencies": {
+    "@types/node": "^17.0.13",
     "@types/nprogress": "^0.2.0",
     "@vitejs/plugin-vue": "^2.0.0",
     "dart-sass": "^1.25.0",

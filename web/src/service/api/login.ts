@@ -3,7 +3,7 @@ import * as T from './type'
 
 const loginApi: T.LoginApi = {
     login(params:T.LoginParams){
-        return http.post('/login', params)
+        return http.post('/user/login', params)
     }
 
 }

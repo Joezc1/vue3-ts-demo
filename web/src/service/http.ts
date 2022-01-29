@@ -2,7 +2,9 @@ import axios,{ AxiosRequestConfig,AxiosResponse} from "axios"
 import NProgress from "nprogress"
 
 // 设置请求的基本地址
-axios.defaults.baseURL = '/'
+// axios.defaults.baseURL = process.env.VITE_APP_WEB_URL
+axios.defaults.baseURL = '/api'
+
 // 请求超时时间
 axios.defaults.timeout = 10000
 // 设置头部contenttype为json格式

@@ -4,7 +4,7 @@
  * @param {Egg.Application} app - egg application
  */
 module.exports = app => {
-  const baseURL = '/proxy'
+  const baseURL = '/'
   const { router, controller , middleware } = app;
   // 中间件
   const _jwt = middleware.jwtErr(app.config.jwt.secret)
