@@ -55,11 +55,11 @@ export default defineConfig({
     }
   },
   // 打包根目录
-  base: './h5',
+  base: '/h5',
   // publicDir: 'assets',
   // assetsPublicPath: './',
   // sourcemap: true,
-  // publicPath:'./',
+  // publicPath:'../server/app/h5',
   // outputDir:'dist',
   // assetsDir:'static'
 })
