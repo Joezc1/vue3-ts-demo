@@ -1,0 +1,52 @@
+$test-color: red;
+
+.flex{
+   display: flex; 
+}
+
+.flex-dir-col{
+    flex-direction: column;
+}
+.justify-center{
+    justify-content: center;
+}
+
+.justify-start{
+    justify-content: flex-start;
+}
+
+.justify-end{
+    justify-content: flex-end;
+}
+
+.align-start{
+    align-items: flex-start;
+}
+
+.align-center{
+    align-items: center;
+}
+
+.align-end{
+    align-items: flex-end;
+}
+
+@for $i from 1 through 50 {
+    .m-#{$i} { margin: ($i)+px; }
+    .mt-#{$i} { margin-top: ($i)+px; }
+    .mb-#{$i} { margin-bottom: ($i)+px; }
+    .ml-#{$i} { margin-left: ($i)+px; }
+    .mr-#{$i} { margin-right: ($i)+px; }
+    .mx-#{$i} { margin-right: ($i)+px;margin-left: ($i)+px; }
+    .my-#{$i} { margin-top: ($i)+px;margin-bottom: ($i)+px; }
+   
+    .p-#{$i} { padding: ($i)+px; }
+    .pt-#{$i} { padding-top: ($i)+px; }
+    .pb-#{$i} { padding-bottom: ($i)+px; }
+    .pl-#{$i} { padding-left: ($i)+px; }
+    .pr-#{$i} { padding-right: ($i)+px; }
+    .px-#{$i} { padding-right: ($i)+px;padding-left: ($i)+px; }
+    .py-#{$i} { padding-top: ($i)+px;padding-bottom: ($i)+px; }
+   
+    .fz-#{$i} { font-size: ($i)+px; }
+}
