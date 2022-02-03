@@ -3,11 +3,17 @@ import { createRouter, createWebHistory, RouteRecordRaw,createWebHashHistory } f
 const routes: RouteRecordRaw[] = [
     {
         path: '/',
-        component: () => import("../views/login/index.vue")
+        component: () => import("@/views/login/index.vue")
     },
     {
         path: '/home',
-        component: () => import("../views/home/index.vue")
+        name: 'home',
+        component: () => import("@/views/home/index.vue")
+    },
+    {
+        path: '/user',
+        name: 'user',
+        component: () => import("@/views/my/index.vue")
     },
 ]
 

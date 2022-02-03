@@ -3,5 +3,6 @@ export interface LoginParams {
     password: string | number
 }
 export interface LoginApi {
-    login: (params: LoginParams)=> Promise<any>
+    login: (params: LoginParams)=> Promise<any>,
+    register: (params: LoginParams)=> Promise<any>
 }

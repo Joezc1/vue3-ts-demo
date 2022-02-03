@@ -23,4 +23,4 @@ export const store:Store<RootState> = createStore({
 
 export function useStore() {
     return baseUseStore(key)
-  }
+}

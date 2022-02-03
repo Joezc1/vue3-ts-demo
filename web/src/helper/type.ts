@@ -12,3 +12,9 @@ export type LoginSubmitType = {
 
     [other: string]: any
 }
+
+export type StoreLoginType = {
+    username: string | number,
+    password:string | number
+}
+

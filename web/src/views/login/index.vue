@@ -3,10 +3,10 @@
     <div>
       <van-nav-bar title="登录" />
     </div>
-    <div class="banner"></div>
+    <div class="banner" ></div>
 
     <div class>
-      <div class="flex px-30 py-15 mt-10 align-center">
+      <div class="flex px-35 py-15 mt-10 align-center">
         <div @click="changeType(1)" class :class="type === 1 ? 'tab-item-active' : 'tab-item'">登录</div>
         <div
           @click="changeType(2)"
@@ -16,7 +16,7 @@
       </div>
 
       <div class="mt-5">
-        <van-form label-width="60px" @submit="onSubmit">
+        <van-form label-width="45px" @submit="onSubmit">
           <van-cell-group inset>
             <van-field
               v-model="username"
@@ -55,7 +55,12 @@
             </van-field>
           </van-cell-group>
           <div class="mt-30 ml-15 mr-15">
-            <van-button round block type="primary" native-type="submit">提交</van-button>
+            <van-button
+              round
+              block
+              type="primary"
+              native-type="submit"
+            >{{ type === 1 ? '立即登录' : '立即注册' }}</van-button>
           </div>
         </van-form>
       </div>
@@ -64,12 +69,14 @@
 </template>
 
 <script setup lang="ts">
-import LoginApi from "@/service/api/login"
+import { useStore } from "@/store/index"
+import { Toast } from "vant"
 import { LoginSubmitType } from "@/helper/type"
 import { useRouter } from "vue-router"
-import { ref } from "vue"
+import { ref,computed } from "vue"
 const Router = useRouter()
 const type = ref(1)
+const store = useStore()
 const checked = ref(false);
 const username = ref()
 const password = ref()
@@ -79,11 +86,37 @@ const changeType = (e: number): void => {
 }
 
 const onSubmit = async (value: LoginSubmitType): Promise<void> => {
-  console.log("value", value);
-  const res = await LoginApi.login({
-    username: 'zhaochao',
-    password: '123456'
-  })
+  if (!checked.value) {
+    Toast.fail('请选勾选用户隐私协议');
+  }
+  if (type.value === 1) {
+    const res = await store.dispatch('user/login', {
+      username: username.value,
+      password: password.value
+    })
+    if (res.code) {
+      store.commit('user/setToken',res.data.token)
+      console.log(store.state.user.token);
+      Toast.success('登陆成功');
+      setTimeout(() => {
+        Router.push({
+          path: '/home'
+        })
+      }, 1000)
+    } else {
+      Toast.fail(res.msg);
+    }
+  } else {
+    const res = await store.dispatch('user/register', {
+      username: username.value,
+      password: password.value
+    })
+    if (res.code) {
+      Toast.success('注册成功');
+      type.value = 1
+    }
+  }
+
 }
 
 </script>
@@ -94,7 +127,9 @@ const onSubmit = async (value: LoginSubmitType): Promise<void> => {
   // background-color: #f5f5f5;
   .banner {
     height: 250px;
-    border: 1px solid #ccc;
+    background-image: url("@/assets/images/welcome.png");
+    background-size: cover;
+    background-repeat: no-repeat;
   }
   .color-blue {
     color: rgb(0, 127, 255);
@@ -105,7 +140,7 @@ const onSubmit = async (value: LoginSubmitType): Promise<void> => {
     font-weight: bold;
   }
   .tab-item {
-    font-size: 17px;
+    font-size: 16px;
   }
 }
 </style>

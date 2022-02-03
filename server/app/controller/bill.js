@@ -9,7 +9,7 @@ class billController extends Controller {
     async addBill() {
         const { ctx, app } = this
         //   pay_type 1支出2收入
-        const { pay_type, amount, type_id, type_name, remark = '' } = ctx.request.body
+        const { pay_type, amount, type_id, type_name, remark = '',date = '' } = ctx.request.body
         // 对入参进行判断
         if (!amount || !type_id || !type_name || !pay_type) {
             ctx.body = this.msgConfig('error', '参数错误')
@@ -32,8 +32,8 @@ class billController extends Controller {
                 type_id,
                 type_name,
                 remark,
-                create_date: moment(new Date()).format('YYYY-MM-DD hh:mm:ss'),
-                update_date: moment(new Date()).format('YYYY-MM-DD hh:mm:ss')
+                create_date: moment(date ? date : new Date()).format('YYYY-MM-DD hh:mm:ss'),
+                update_date: moment(date ? date : new Date()).format('YYYY-MM-DD hh:mm:ss')
             })
             if (result) {
                 ctx.body = this.msgConfig("success")

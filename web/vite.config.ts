@@ -49,8 +49,9 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
+        charset: false,
         // 全局样式
-        additionalData: '@import "@/assets/style/main.scss";'
+        additionalData: '@import "./src/assets/style/main.scss";'
       }
     }
   },
@@ -59,7 +60,6 @@ export default defineConfig({
   // publicDir: 'assets',
   // assetsPublicPath: './',
   // sourcemap: true,
-  // publicPath:'../server/app/h5',
   // outputDir:'dist',
   // assetsDir:'static'
 })
