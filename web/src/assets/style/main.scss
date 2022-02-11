@@ -19,6 +19,10 @@ $test-color: red;
     justify-content: flex-end;
 }
 
+.justify-between{
+    justify-content: space-between;
+}
+
 .align-start{
     align-items: flex-start;
 }
@@ -51,6 +55,18 @@ $test-color: red;
     .fz-#{$i} { font-size: ($i)+px; }
 }
 
+@for $i from 1 through 10 {
+    .flex-#{$i} { flex: ($i); }
+}
+
 .font-weight-bold{
     font-weight: bold;
+}
+
+.full-height{
+    height: 100%;
+}
+
+.full-width{
+    width: 100%;
 }

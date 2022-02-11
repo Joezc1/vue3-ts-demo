@@ -18,3 +18,19 @@ export type StoreLoginType = {
     password:string | number
 }
 
+export type BillDetailType = {
+    id?: number | string,
+    amount: number | string
+    create_date?: string
+    date: string 
+    is_delete?: number
+    pay_type: number | string
+    remark: string
+    type_id:string | number
+    type_name: string
+    update_date?: string
+    user_id?: number | string
+
+    [other: string]: any
+}
+

@@ -36,7 +36,7 @@ class uploadController extends Controller {
           // 清除临时文件
           ctx.cleanupRequestFiles();
         }
-        ctx.body = this.msgConfig('success','上传成功','http://101.43.17.174:3000'+uploadDir.replace(/app/g, '').replace(/\\/g, "/"))
+        ctx.body = this.msgConfig('success','上传成功','http://101.43.17.174:888'+uploadDir.replace(/app/g, '').replace(/\\/g, "/"))
       }
 }
 

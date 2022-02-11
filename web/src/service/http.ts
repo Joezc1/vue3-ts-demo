@@ -1,11 +1,12 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios"
 import NProgress from "nprogress"
+import { Toast } from "vant"
 // import {store} from "@/store/index"
 // console.log("store",store);
 
 // 请求baseUrl
 const baseUrl: any = import.meta.env.VITE_APP_WEB_URL
-const token = localStorage.getItem('token')
+
 // 设置请求的基本地址
 axios.defaults.baseURL = baseUrl
 
@@ -16,10 +17,8 @@ axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8'
 // 请求拦截
 axios.interceptors.request.use(
   (config): AxiosRequestConfig<any> => {
-    if (token) {
-      // token业务处理
-      config.headers && config.headers.token && (config.headers.Authorization = token)
-    }
+    let token = localStorage.getItem('token') || ''
+    config && config.headers && (config.headers.Authorization = token)
     return config
   },
   (error => {
@@ -30,10 +29,15 @@ axios.interceptors.request.use(
 // 响应拦截
 axios.interceptors.response.use(
   (res): AxiosResponse<any> => {
-    if (res.data.code === -1) {
+    if (res.data.code * 1 === -1) {
+      console.log("需要登陆");
       window.location.href = '/'
+    }else if(res.data.code *1 ){
+      return res
+    }else{
+      Toast.fail(res.data.msg)
+      return res
     }
-    return res
   },
   (error => {
     console.error(error);
@@ -89,6 +93,7 @@ const http: Http = {
     })
   },
   upload(url, file) {
+    console.log("upload",file);
     return new Promise((resolve, reject) => {
       NProgress.start()
       axios

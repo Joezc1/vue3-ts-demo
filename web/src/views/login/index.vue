@@ -95,8 +95,8 @@ const onSubmit = async (value: LoginSubmitType): Promise<void> => {
       password: password.value
     })
     if (res.code) {
+      store.commit('user/setLogin',true)
       store.commit('user/setToken',res.data.token)
-      console.log(store.state.user.token);
       Toast.success('登陆成功');
       setTimeout(() => {
         Router.push({
