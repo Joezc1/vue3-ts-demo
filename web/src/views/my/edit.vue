@@ -31,16 +31,16 @@
 import CommonApi from "@/service/api/common"
 import { Toast } from "vant"
 import { ref } from "vue"
-const file = ref([]);
+const file:any = ref([]);
 
 const afterRead = async (data: any) => {
+    file.value = []
     const formData = new FormData()
     formData.append('file', data.file)
     // 此时可以自行将文件上传至服务器
     const res = await CommonApi.upload(formData)
     if(res.code){
-        console.log("res",res);
-        // file.value[0].url = 
+        file.value.push({url:res.data})
     }
 };
 </script>
